@@ -1,0 +1,415 @@
+{
+  "kind": "night",
+  "origin": {
+    "lat": 38.7809981,
+    "lng": -9.1318608,
+    "label": "Aeroporto Humberto Delgado",
+    "display_name": "Aeroporto Humberto Delgado, Alameda das Comunidades Portuguesas, Olivais, Lisboa, 1700-111, Portugal",
+    "city": "Lisboa",
+    "source": "nominatim",
+    "osm": "way/336112741"
+  },
+  "area": null,
+  "radius_km": 3.0,
+  "stay_type": null,
+  "check_in": null,
+  "check_out": null,
+  "found_total": 21,
+  "skipped_unnamed_or_invalid": 11,
+  "stays": [
+    {
+      "id": "node/2041865436",
+      "name": "Holiday Inn Express Lisbon Airport",
+      "type": "hotel",
+      "type_label": "Hotel",
+      "lat": 38.7861064,
+      "lng": -9.120416,
+      "address": "Rua da Guiné 18, 2685-334 Lisboa",
+      "city": "Lisboa",
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": null,
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/gb/en/lisbon/lisap/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-PT-_-LISAP",
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": null,
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/node/2041865436",
+      "also_mapped_as": [
+        "way/146664340"
+      ],
+      "straight_line_m": 1143,
+      "drive": {
+        "duration_s": 218,
+        "distance_m": 1361
+      },
+      "walk": {
+        "duration_s": 1346,
+        "distance_m": 1678
+      },
+      "rank": 1,
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Holiday+Inn+Express+Lisbon+Airport%2C+Lisboa&latitude=38.786106&longitude=-9.120416&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.795106&ne_lng=-9.111416&sw_lat=38.777106&sw_lng=-9.129416&adults=1&query=Lisboa",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.786106%2C-9.120416",
+        "openstreetmap": "https://www.openstreetmap.org/node/2041865436",
+        "website": "https://www.ihg.com/holidayinnexpress/hotels/gb/en/lisbon/lisap/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-PT-_-LISAP",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.786106&dropoff[longitude]=-9.120416&dropoff[nickname]=Holiday+Inn+Express+Lisbon+Airport",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.786106&destination[longitude]=-9.120416",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.786106%2C-9.120416&travelmode=driving"
+      }
+    },
+    {
+      "id": "way/1280394812",
+      "name": "Plaza Lisbon",
+      "type": "apartment",
+      "type_label": "Apartment",
+      "lat": 38.7769554,
+      "lng": -9.1196464,
+      "address": "Praça do Norte 6, 1800-283 Lisboa",
+      "city": "Lisboa",
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": "+351 931 739 141",
+      "website": "http://mysh-plaza-lisbon.tuhotel.eu/",
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": null,
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/way/1280394812",
+      "straight_line_m": 1150,
+      "drive": {
+        "duration_s": 219,
+        "distance_m": 1673
+      },
+      "walk": {
+        "duration_s": 3040,
+        "distance_m": 3798
+      },
+      "rank": 2,
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Plaza+Lisbon%2C+Lisboa&latitude=38.776955&longitude=-9.119646&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.785955&ne_lng=-9.110646&sw_lat=38.767955&sw_lng=-9.128646&adults=1&query=Lisboa",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.776955%2C-9.119646",
+        "openstreetmap": "https://www.openstreetmap.org/way/1280394812",
+        "website": "http://mysh-plaza-lisbon.tuhotel.eu/",
+        "call": "tel:+351931739141",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.776955&dropoff[longitude]=-9.119646&dropoff[nickname]=Plaza+Lisbon",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.776955&destination[longitude]=-9.119646",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.776955%2C-9.119646&travelmode=driving"
+      }
+    },
+    {
+      "id": "way/592418001",
+      "name": "Alojamentos da Praça",
+      "type": "apartment",
+      "type_label": "Apartment",
+      "lat": 38.7769311,
+      "lng": -9.1194831,
+      "address": "Praça do Norte 5, 5A, 5B, 5C, 5D, 5E",
+      "city": null,
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": null,
+      "website": null,
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": null,
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/way/592418001",
+      "straight_line_m": 1164,
+      "drive": {
+        "duration_s": 221,
+        "distance_m": 1687
+      },
+      "walk": {
+        "duration_s": 3052,
+        "distance_m": 3812
+      },
+      "rank": 3,
+      "city_hint": "Lisboa",
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Alojamentos+da+Pra%C3%A7a%2C+Lisboa&latitude=38.776931&longitude=-9.119483&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.785931&ne_lng=-9.110483&sw_lat=38.767931&sw_lng=-9.128483&adults=1&query=Lisboa",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.776931%2C-9.119483",
+        "openstreetmap": "https://www.openstreetmap.org/way/592418001",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.776931&dropoff[longitude]=-9.119483&dropoff[nickname]=Alojamentos+da+Pra%C3%A7a",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.776931&destination[longitude]=-9.119483",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.776931%2C-9.119483&travelmode=driving"
+      }
+    },
+    {
+      "id": "node/9098998179",
+      "name": "B&B Hotel Lisboa Aeroporto",
+      "type": "hotel",
+      "type_label": "Hotel",
+      "lat": 38.7864828,
+      "lng": -9.1170255,
+      "address": "Rua Vasco da Gama 5, 2685-244 Portela",
+      "city": "Portela",
+      "operator": null,
+      "brand": "B&B Hotels",
+      "stars": null,
+      "phone": "+351 211 626 726",
+      "website": "https://www.hotel-bb.com/en/hotel/lisboa-aeroporto",
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": "wlan",
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/node/9098998179",
+      "straight_line_m": 1423,
+      "drive": {
+        "duration_s": 222,
+        "distance_m": 2018
+      },
+      "walk": {
+        "duration_s": 2189,
+        "distance_m": 2736
+      },
+      "rank": 4,
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=B%26B+Hotel+Lisboa+Aeroporto%2C+Portela&latitude=38.786483&longitude=-9.117026&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.795483&ne_lng=-9.108026&sw_lat=38.777483&sw_lng=-9.126026&adults=1&query=Portela",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.786483%2C-9.117026",
+        "openstreetmap": "https://www.openstreetmap.org/node/9098998179",
+        "website": "https://www.hotel-bb.com/en/hotel/lisboa-aeroporto",
+        "call": "tel:+351211626726",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.786483&dropoff[longitude]=-9.117026&dropoff[nickname]=B%26B+Hotel+Lisboa+Aeroporto",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.786483&destination[longitude]=-9.117026",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.786483%2C-9.117026&travelmode=driving"
+      }
+    },
+    {
+      "id": "relation/15080560",
+      "name": "Stay Hotel Lisboa Aeroporto",
+      "type": "hotel",
+      "type_label": "Hotel",
+      "lat": 38.7859575,
+      "lng": -9.1179727,
+      "address": null,
+      "city": null,
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": null,
+      "website": "https://www.stayhotels.pt/stayhotellisboaaeroporto",
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": null,
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/relation/15080560",
+      "straight_line_m": 1324,
+      "drive": {
+        "duration_s": 231,
+        "distance_m": 1985
+      },
+      "walk": {
+        "duration_s": 2276,
+        "distance_m": 2845
+      },
+      "rank": 5,
+      "city_hint": "Lisboa",
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Stay+Hotel+Lisboa+Aeroporto%2C+Lisboa&latitude=38.785958&longitude=-9.117973&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.794958&ne_lng=-9.108973&sw_lat=38.776958&sw_lng=-9.126973&adults=1&query=Lisboa",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.785958%2C-9.117973",
+        "openstreetmap": "https://www.openstreetmap.org/relation/15080560",
+        "website": "https://www.stayhotels.pt/stayhotellisboaaeroporto",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.785958&dropoff[longitude]=-9.117973&dropoff[nickname]=Stay+Hotel+Lisboa+Aeroporto",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.785958&destination[longitude]=-9.117973",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.785958%2C-9.117973&travelmode=driving"
+      }
+    },
+    {
+      "id": "way/1280394807",
+      "name": "Lisbon Hostel Terminal 4",
+      "type": "hostel",
+      "type_label": "Hostel",
+      "lat": 38.7762124,
+      "lng": -9.119414,
+      "address": "Circular Norte do Bairro da Encarnação, 1800-281 Santa Maria dos Olivais",
+      "city": "Santa Maria dos Olivais",
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": "+351 964074116",
+      "website": null,
+      "opening_hours": "Check-in time: 03:00pm  Check-out time: 11:00am",
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": "wlan",
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/way/1280394807",
+      "straight_line_m": 1203,
+      "drive": {
+        "duration_s": 234,
+        "distance_m": 1764
+      },
+      "walk": {
+        "duration_s": 3010,
+        "distance_m": 3760
+      },
+      "rank": 6,
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Lisbon+Hostel+Terminal+4%2C+Santa+Maria+dos+Olivais&latitude=38.776212&longitude=-9.119414&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.785212&ne_lng=-9.110414&sw_lat=38.767212&sw_lng=-9.128414&adults=1&query=Santa+Maria+dos+Olivais",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.776212%2C-9.119414",
+        "openstreetmap": "https://www.openstreetmap.org/way/1280394807",
+        "call": "tel:+351964074116",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.776212&dropoff[longitude]=-9.119414&dropoff[nickname]=Lisbon+Hostel+Terminal+4",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.776212&destination[longitude]=-9.119414",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.776212%2C-9.119414&travelmode=driving"
+      }
+    },
+    {
+      "id": "way/306283417",
+      "name": "Star inn",
+      "type": "hotel",
+      "type_label": "Hotel",
+      "lat": 38.7706726,
+      "lng": -9.1252398,
+      "address": "Rua C 2",
+      "city": null,
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": null,
+      "website": null,
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": null,
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/way/306283417",
+      "straight_line_m": 1284,
+      "drive": {
+        "duration_s": 269,
+        "distance_m": 2394
+      },
+      "walk": {
+        "duration_s": 2029,
+        "distance_m": 2536
+      },
+      "rank": 7,
+      "city_hint": "Lisboa",
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Star+inn%2C+Lisboa&latitude=38.770673&longitude=-9.125240&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.779673&ne_lng=-9.116240&sw_lat=38.761673&sw_lng=-9.134240&adults=1&query=Lisboa",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.770673%2C-9.125240",
+        "openstreetmap": "https://www.openstreetmap.org/way/306283417",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.770673&dropoff[longitude]=-9.125240&dropoff[nickname]=Star+inn",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.770673&destination[longitude]=-9.125240",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.770673%2C-9.125240&travelmode=driving"
+      }
+    },
+    {
+      "id": "node/12314550862",
+      "name": "Lisbon Terminal 3 Hostel",
+      "type": "hostel",
+      "type_label": "Hostel",
+      "lat": 38.7717061,
+      "lng": -9.1139371,
+      "address": null,
+      "city": null,
+      "operator": null,
+      "brand": null,
+      "stars": null,
+      "phone": null,
+      "website": null,
+      "opening_hours": null,
+      "rooms": null,
+      "beds": null,
+      "wheelchair": null,
+      "internet_access": null,
+      "price": null,
+      "price_note": "Price on Booking / Airbnb — OpenStreetMap has no nightly rates",
+      "osm_url": "https://www.openstreetmap.org/node/12314550862",
+      "straight_line_m": 1866,
+      "drive": {
+        "duration_s": 301,
+        "distance_m": 2527
+      },
+      "walk": {
+        "duration_s": 3036,
+        "distance_m": 3792
+      },
+      "rank": 8,
+      "city_hint": "Lisboa",
+      "links": {
+        "check_booking": "https://www.booking.com/searchresults.html?ss=Lisbon+Terminal+3+Hostel%2C+Lisboa&latitude=38.771706&longitude=-9.113937&group_adults=1&no_rooms=1",
+        "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.780706&ne_lng=-9.104937&sw_lat=38.762706&sw_lng=-9.122937&adults=1&query=Lisboa",
+        "open_maps": "https://www.google.com/maps/search/?api=1&query=38.771706%2C-9.113937",
+        "openstreetmap": "https://www.openstreetmap.org/node/12314550862",
+        "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&pickup[nickname]=Aeroporto+Humberto+Delgado&dropoff[latitude]=38.771706&dropoff[longitude]=-9.113937&dropoff[nickname]=Lisbon+Terminal+3+Hostel",
+        "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=38.780998&pickup[longitude]=-9.131861&destination[latitude]=38.771706&destination[longitude]=-9.113937",
+        "directions": "https://www.google.com/maps/dir/?api=1&origin=38.780998%2C-9.131861&destination=38.771706%2C-9.113937&travelmode=driving"
+      }
+    }
+  ],
+  "top_pick": {
+    "id": "node/2041865436",
+    "name": "Holiday Inn Express Lisbon Airport",
+    "why": "Shortest OSRM driving time from your origin"
+  },
+  "nearest_on_foot": null,
+  "area_links": {
+    "check_booking": "https://www.booking.com/searchresults.html?ss=Aeroporto+Humberto+Delgado%2C+Lisboa&latitude=38.780998&longitude=-9.131861&group_adults=1&no_rooms=1",
+    "check_airbnb": "https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=38.800998&ne_lng=-9.111861&sw_lat=38.760998&sw_lng=-9.151861&adults=1&query=Lisboa"
+  },
+  "warnings": [],
+  "honesty": "Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cannot complete a paid checkout. 'Get a ride' and 'Check Booking/Airbnb' open those apps or sites with pickup, dropoff or search prefilled; you confirm and pay there. No reservation has been made. OpenStreetMap does not know room availability or nightly prices.",
+  "attribution": "Map data © OpenStreetMap contributors (ODbL). Routing by OSRM.",
+  "fetched_at": "09 Nov 2026, 08:17 WAT",
+  "evidence": [
+    {
+      "source": "Nominatim (OpenStreetMap)",
+      "host": "nominatim.openstreetmap.org",
+      "url": "https://nominatim.openstreetmap.org/search?q=Lisbon+airport&format=jsonv2&limit=1&addressdetails=1",
+      "what": "geocode origin: Lisbon airport",
+      "ok": true
+    },
+    {
+      "source": "Overpass (OpenStreetMap)",
+      "host": "overpass-api.de",
+      "url": "https://overpass-api.de/api/interpreter",
+      "what": "lodging within 3000 m of 38.78100,-9.13186",
+      "ok": true
+    },
+    {
+      "source": "OSRM driving",
+      "host": "router.project-osrm.org",
+      "url": "https://router.project-osrm.org/table/v1/driving/-9.131861,38.780998;-9.120416,38.786106;-9.119646,38.776955;-9.119483,38.776931;-9.119414,38.776212;-9.125240,38.770673;-9.125125,38.770308;-9.117973,38.785958;-9.121142,38.772216;-9.117026,38.786483;-9.113937,38.771706;-9.130138,38.761242;-9.136466,38.759460;-9.153549,38.764926;-9.103414,38.770691;-9.103035,38.770614;-9.100477,38.776571;-9.111188,38.761734;-9.098529,38.778072;-9.104862,38.765386;-9.098021,38.778359;-9.139415,38.755127?sources=0&annotations=duration,distance",
+      "what": "driving times from origin to 21 stays",
+      "ok": true
+    },
+    {
+      "source": "OSRM walking",
+      "host": "routing.openstreetmap.de",
+      "url": "https://routing.openstreetmap.de/routed-foot/table/v1/driving/-9.131861,38.780998;-9.120416,38.786106;-9.119646,38.776955;-9.119483,38.776931;-9.119414,38.776212;-9.125240,38.770673;-9.125125,38.770308;-9.117973,38.785958;-9.121142,38.772216;-9.117026,38.786483;-9.113937,38.771706;-9.130138,38.761242;-9.136466,38.759460?sources=0&annotations=duration,distance",
+      "what": "walking times from origin to 12 stays",
+      "ok": true
+    }
+  ]
+}

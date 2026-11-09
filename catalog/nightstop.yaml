@@ -1,0 +1,22 @@
+# Draft mirror of plugin-catalog/nightstop.yaml for NousResearch/hermes-agent.
+# The live pin lives in the hermes-agent PR; keep this file in sync after merges.
+name: nightstop
+repo: https://github.com/decentralpapi/nightstop
+sha: 0000000000000000000000000000000000000000
+description: Last-minute ride + room SOS — real OpenStreetMap stays near you ranked by OSRM drive time, with Uber/Lyft/Booking/Airbnb links prefilled (no checkout, no invented prices).
+maintainer: Omimi
+tier: community
+category: tools
+version: "0.1.1"
+title: Nightstop
+docs_url: https://github.com/decentralpapi/nightstop#readme
+platforms: [linux, macos, windows]
+screenshots: []
+capabilities:
+  provides_tools:
+    - find_stay
+    - find_ride
+    - plan_night
+  provides_hooks: []
+  provides_middleware: []
+  requires_env: []

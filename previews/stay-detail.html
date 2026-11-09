@@ -1,0 +1,69 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Nightstop · Holiday Inn Express Lisbon Airport</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f5f6;color:#111;font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+a{color:inherit}.wrap{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:650;font-size:18px;letter-spacing:-.3px}
+.logo i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111;color:#fff;font-style:normal;font-size:14px}
+.muted{color:#6b6f76}.tiny{font-size:12px}.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #e3e4e8;background:#fff;border-radius:999px;padding:6px 13px;font-size:13px}
+.chip.dark{background:#111;color:#fff;border-color:#111}.chips{display:flex;flex-wrap:wrap;gap:8px}
+.crumb{font-size:12px;color:#6b6f76;margin:4px 0 14px}
+.card{background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px rgba(17,17,17,.06)}
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;margin-bottom:34px}
+.hero .vis{position:relative;border-radius:22px;overflow:hidden;min-height:340px;background:#eceef1}
+.hero .vis svg{position:absolute;inset:0;width:100%;height:100%}
+.badge{position:absolute;top:14px;left:14px;background:#fff;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.attr{position:absolute;right:10px;bottom:8px;font-size:10px;color:#6b6f76;background:rgba(255,255,255,.8);padding:2px 6px;border-radius:6px}
+h1{font-size:28px;letter-spacing:-.6px;margin:12px 0 4px;line-height:1.15}h2{font-size:22px;letter-spacing:-.4px;margin:0 0 14px}
+.big{font-size:30px;font-weight:700;letter-spacing:-.8px;margin:10px 0 2px}
+.note{display:inline-block;border:1px solid #e3e4e8;border-radius:999px;padding:5px 12px;font-size:12px;color:#55595f;margin:8px 0 14px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:6px;text-decoration:none;border:1px solid #dedfe3;background:#fff;color:#111;border-radius:999px;padding:12px 18px;font-weight:600;font-size:14px;white-space:nowrap}
+.btn.primary{background:#111;color:#fff;border-color:#111}.btn.small{padding:8px 13px;font-size:13px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 16px}.cta .primary{flex:1;min-width:180px}
+details.sec{border:1px solid #ececef;border-radius:16px;padding:12px 16px;margin-top:10px;background:#fff}
+details.sec summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+details.sec summary::after{content:"⌄";color:#6b6f76}details.sec[open] summary::after{content:"⌃"}
+.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin-top:12px}
+.kv>div{display:flex;gap:10px;align-items:flex-start;min-width:0}.kv b{display:block;font-size:12px;color:#6b6f76;font-weight:500}
+.kv span.ic{flex:0 0 30px;height:30px;border-radius:50%;background:#f1f2f4;display:grid;place-items:center;font-size:13px}
+.kv div>div{overflow-wrap:anywhere;font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.lc{position:relative;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 14px 34px rgba(17,17,17,.10);display:flex;flex-direction:column}
+.lc .vis{position:relative;height:210px;background:#eceef1}.lc .vis svg{position:absolute;inset:0;width:100%;height:100%}
+.lc .panel{background:linear-gradient(180deg,#2b3038,#1d2127);color:#fff;padding:16px 18px 14px}
+.lc .eta{font-size:23px;font-weight:700;letter-spacing:-.5px}.lc .row{display:flex;gap:14px;align-items:flex-end;margin-top:6px}
+.lc .name{flex:1;min-width:0;font-size:13.5px}.lc .name div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lc .stat{text-align:center;font-size:13px;padding-left:12px;border-left:1px solid rgba(255,255,255,.18)}
+.lc .foot{border-top:1px solid rgba(255,255,255,.14);margin-top:12px;padding-top:10px;font-size:12px;color:#b9bec7;display:flex;justify-content:space-between;gap:8px}
+.lc .acts{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px 14px}
+.lc .acts .btn{flex:1}
+.ride-hero{padding:26px;margin-bottom:22px}.route{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.route .pt{display:flex;gap:8px;align-items:center;font-weight:500;font-size:14px}.dot{width:12px;height:12px;border-radius:50%;border:3px solid #111;background:#fff}.dot.fill{background:#111}
+.rides{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.pc{padding:12px;border-radius:26px}.pc .face{border-radius:18px;background:#eceef1;height:170px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+.pc .face .nm{font-size:24px;letter-spacing:-.5px;font-weight:500}.pc .face .st{font-size:13px;color:#55595f;margin-top:3px}
+.pc .bot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 4px 4px}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;position:relative}
+.warn{background:#fff8e6;border:1px solid #f3e2b3;border-radius:14px;padding:10px 14px;font-size:13px;margin:8px 0}
+.honest{font-size:12.5px;color:#55595f;background:#fff;border-radius:16px;padding:14px 16px;margin-top:26px;border:1px solid #ececef}
+.ev{font-size:12px}.ev td{padding:5px 8px;border-top:1px solid #f0f0f2;vertical-align:top;overflow-wrap:anywhere}
+.section-h{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 14px}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.hero .vis{min-height:250px}.kv{grid-template-columns:1fr}h1{font-size:24px}}
+</style></head><body><div class=wrap><div class=top><div class=logo><i>N</i>Nightstop</div><div class="chips"><span class=chip>Stay</span><span class=chip>Ride</span><span class="chip dark">Tonight</span></div></div>
+<div class=crumb>← Tonight · Aeroporto Humberto Delgado · Stay details</div>
+<section class=hero>
+  <div class=vis><svg class="loc" viewBox="0 0 560 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Holiday Inn Express Lisbon Airport relative to Aeroporto Humberto Delgado"><rect width="560" height="420" fill="#eceef1"/><g stroke="#e0e3e8" stroke-width="1"><line x1="0" y1="0" x2="0" y2="420"/><line x1="30" y1="0" x2="30" y2="420"/><line x1="60" y1="0" x2="60" y2="420"/><line x1="90" y1="0" x2="90" y2="420"/><line x1="120" y1="0" x2="120" y2="420"/><line x1="150" y1="0" x2="150" y2="420"/><line x1="180" y1="0" x2="180" y2="420"/><line x1="210" y1="0" x2="210" y2="420"/><line x1="240" y1="0" x2="240" y2="420"/><line x1="270" y1="0" x2="270" y2="420"/><line x1="300" y1="0" x2="300" y2="420"/><line x1="330" y1="0" x2="330" y2="420"/><line x1="360" y1="0" x2="360" y2="420"/><line x1="390" y1="0" x2="390" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/><line x1="450" y1="0" x2="450" y2="420"/><line x1="480" y1="0" x2="480" y2="420"/><line x1="510" y1="0" x2="510" y2="420"/><line x1="540" y1="0" x2="540" y2="420"/><line x1="0" y1="0" x2="560" y2="0"/><line x1="0" y1="30" x2="560" y2="30"/><line x1="0" y1="60" x2="560" y2="60"/><line x1="0" y1="90" x2="560" y2="90"/><line x1="0" y1="120" x2="560" y2="120"/><line x1="0" y1="150" x2="560" y2="150"/><line x1="0" y1="180" x2="560" y2="180"/><line x1="0" y1="210" x2="560" y2="210"/><line x1="0" y1="240" x2="560" y2="240"/><line x1="0" y1="270" x2="560" y2="270"/><line x1="0" y1="300" x2="560" y2="300"/><line x1="0" y1="330" x2="560" y2="330"/><line x1="0" y1="360" x2="560" y2="360"/><line x1="0" y1="390" x2="560" y2="390"/><line x1="0" y1="420" x2="560" y2="420"/></g><circle cx="399.9" cy="260.9" r="3.5" fill="#c9ccd3"/><circle cx="401.5" cy="261.2" r="3.5" fill="#c9ccd3"/><circle cx="425.7" cy="140.9" r="3.5" fill="#c9ccd3"/><circle cx="416.4" cy="147.5" r="3.5" fill="#c9ccd3"/><circle cx="402.2" cy="270.3" r="3.5" fill="#c9ccd3"/><circle cx="345.0" cy="340.1" r="3.5" fill="#c9ccd3"/><circle cx="456.0" cy="327.0" r="3.5" fill="#c9ccd3"/><line x1="280.0" y1="210.0" x2="392.4" y2="145.7" stroke="#111" stroke-width="1.6" stroke-dasharray="4 5"/><circle cx="280.0" cy="210.0" r="9" fill="#fff" stroke="#111" stroke-width="2.5"/><circle cx="280.0" cy="210.0" r="3.5" fill="#111"/><g transform="translate(392.4,145.7)"><path d="M0 0 C-11 -14 -11 -28 0 -28 C11 -28 11 -14 0 0Z" fill="#111"/><circle cy="-19" r="4.2" fill="#fff"/></g></svg><span class=badge>★ Top pick · fastest drive</span><span class=attr>Position from © OpenStreetMap contributors · not a photo</span></div>
+  <div>
+    <span class=chip>Hotel</span>
+    <h1>Holiday Inn Express Lisbon Airport</h1>
+    <div class=big>4 min drive · 1.4 km</div>
+    <div class="muted tiny">from Aeroporto Humberto Delgado · price on Booking / Airbnb (OSM has no nightly rates)</div>
+    <div class=note>🕑 Checked 09 Nov 2026, 07:19 WAT · availability not known until you check</div>
+    <div class=muted style="font-size:12px;margin-bottom:6px">Getting there</div>
+    <div class=chips style="margin-bottom:16px"><span class="chip dark">🚗 4 min drive</span><span class=chip>🚶 22 min walk</span><span class=chip>1.1 km straight line</span></div>
+    <div class=cta><a class="btn primary" href="https://m.uber.com/ul/?action=setPickup&amp;pickup[latitude]=38.780998&amp;pickup[longitude]=-9.131861&amp;pickup[nickname]=Aeroporto+Humberto+Delgado&amp;dropoff[latitude]=38.786106&amp;dropoff[longitude]=-9.120416&amp;dropoff[nickname]=Holiday+Inn+Express+Lisbon+Airport" target="_blank" rel="noopener noreferrer">Get a ride</a><a class="btn" href="https://www.booking.com/searchresults.html?ss=Holiday+Inn+Express+Lisbon+Airport%2C+Lisboa&amp;latitude=38.786106&amp;longitude=-9.120416&amp;group_adults=1&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">See rooms</a></div>
+    <div class=chips><a class="btn small" href="https://lyft.com/ride?id=lyft&amp;pickup[latitude]=38.780998&amp;pickup[longitude]=-9.131861&amp;destination[latitude]=38.786106&amp;destination[longitude]=-9.120416" target="_blank" rel="noopener noreferrer">Open Lyft</a><a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=38.780998%2C-9.131861&amp;destination=38.786106%2C-9.120416&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Open maps</a><a class="btn small" href="https://www.airbnb.com/s/homes?search_by_map=true&amp;ne_lat=38.795106&amp;ne_lng=-9.111416&amp;sw_lat=38.777106&amp;sw_lng=-9.129416&amp;adults=1&amp;query=Lisboa" target="_blank" rel="noopener noreferrer">Check Airbnb</a></div>
+    <details class=sec open><summary>Details from OpenStreetMap</summary><div class=kv><div><span class=ic>📍</span><div><b>Address</b>Rua da Guiné 18, 2685-334 Lisboa</div></div><div><span class=ic>🏷</span><div><b>Type</b>Hotel</div></div><div><span class=ic>🌐</span><div><b>Website</b>https://www.ihg.com/holidayinnexpress/hotels/gb/en/lisbon/lisap/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-PT-_-LISAP</div></div></div></details>
+    <details class=sec open><summary>Getting there</summary><div class=kv><div><span class=ic>🚗</span><div><b>Driving (OSRM)</b>4 min · 1.4 km by road</div></div><div><span class=ic>🚶</span><div><b>Walking (OSRM foot)</b>22 min · 1.7 km</div></div><div><span class=ic>⏱</span><div><b>Traffic</b>Not included — road-network estimate</div></div></div></details>
+    <details class=sec><summary>Booking &amp; payment</summary><p class="tiny muted">Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cannot complete a paid checkout. &#x27;Get a ride&#x27; and &#x27;Check Booking/Airbnb&#x27; open those apps or sites with pickup, dropoff or search prefilled; you confirm and pay there. No reservation has been made. OpenStreetMap does not know room availability or nightly prices.</p></details>
+  </div>
+</section><div class=honest><b>Honest limits.</b> Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cannot complete a paid checkout. &#x27;Get a ride&#x27; and &#x27;Check Booking/Airbnb&#x27; open those apps or sites with pickup, dropoff or search prefilled; you confirm and pay there. No reservation has been made. OpenStreetMap does not know room availability or nightly prices.<br>Map data © OpenStreetMap contributors (ODbL). Routing by OSRM. Generated 09 Nov 2026, 07:19 WAT. This page is a static snapshot and makes no network calls; buttons open the listed apps/sites.</div><details class=sec><summary>Evidence &amp; sources (4 requests)</summary><table class=ev><tr><td>✅</td><td>Nominatim (OpenStreetMap)</td><td>nominatim.openstreetmap.org</td><td>geocode origin: Lisbon airport</td></tr><tr><td>✅</td><td>Overpass (OpenStreetMap)</td><td>overpass-api.de</td><td>lodging within 3000 m of 38.78100,-9.13186</td></tr><tr><td>✅</td><td>OSRM driving</td><td>router.project-osrm.org</td><td>driving times from origin to 21 stays</td></tr><tr><td>✅</td><td>OSRM walking</td><td>routing.openstreetmap.de</td><td>walking times from origin to 12 stays</td></tr></table></details></div></body></html>

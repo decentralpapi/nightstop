@@ -1,0 +1,23 @@
+[
+ {
+  "place_id": 145522264,
+  "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+  "osm_type": "relation",
+  "osm_id": 3600565,
+  "lat": "52.5250175",
+  "lon": "13.3694480",
+  "category": "building",
+  "type": "train_station",
+  "place_rank": 30,
+  "importance": 0.5282808011034157,
+  "addresstype": "building",
+  "name": "Berlin Hauptbahnhof",
+  "display_name": "Berlin Hauptbahnhof, Washingtonplatz, Europacity, Moabit, Mitte, Berlin, 10557, Deutschland",
+  "boundingbox": [
+   "52.5242887",
+   "52.5257400",
+   "13.3682756",
+   "13.3706245"
+  ]
+ }
+]

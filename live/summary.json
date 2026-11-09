@@ -1,0 +1,39 @@
+{
+  "berlin-night": {
+    "ok": true,
+    "seconds": 37.3,
+    "stays": 8,
+    "found_total": 197,
+    "warnings": []
+  },
+  "berlin-stay": {
+    "ok": true,
+    "seconds": 53.1,
+    "stays": 12,
+    "found_total": 197,
+    "warnings": [
+      "Dates 2026-11-10 \u2192 2026-11-11 only prefill Booking/Airbnb links; OpenStreetMap does not know vacancy."
+    ]
+  },
+  "berlin-ride": {
+    "ok": true,
+    "seconds": 2.8,
+    "stays": 0,
+    "found_total": null,
+    "warnings": []
+  },
+  "lisbon-night": {
+    "ok": true,
+    "seconds": 34.8,
+    "stays": 8,
+    "found_total": 21,
+    "warnings": []
+  },
+  "lagos-night": {
+    "ok": true,
+    "seconds": 58.6,
+    "stays": 8,
+    "found_total": 14,
+    "warnings": []
+  }
+}

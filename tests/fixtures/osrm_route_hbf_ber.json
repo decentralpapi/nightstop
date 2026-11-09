@@ -1,0 +1,20 @@
+{
+ "code": "Ok",
+ "routes": [
+  {
+   "legs": [
+    {
+     "steps": [],
+     "weight": 5525.3,
+     "summary": "",
+     "duration": 2230.6,
+     "distance": 28516.8
+    }
+   ],
+   "weight_name": "routability",
+   "weight": 5525.3,
+   "duration": 2230.6,
+   "distance": 28516.8
+  }
+ ]
+}

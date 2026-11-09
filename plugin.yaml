@@ -1,0 +1,25 @@
+name: nightstop
+version: 0.1.1
+manifest_version: 2
+api_version: 1
+description: >
+  Last-minute ride + room SOS. Out late with nowhere to sleep, or need a driver
+  now? Nightstop finds real, named hotels, hostels, guest houses, motels,
+  serviced apartments and chalets mapped in OpenStreetMap near you, ranks them by
+  real OSRM driving time (plus walking time when close), and returns ready-to-open
+  Uber, Lyft, Google Maps, Booking.com and Airbnb links with pickup, dropoff or
+  search prefilled. It cannot log into those services or pay: you finish the
+  booking in their app. Never invents prices, reviews, photos, availability or
+  ETAs. No API keys. Disclosure — sends the place names or coordinates you ask
+  about to these hosts: nominatim.openstreetmap.org (geocoding, max 1 request per
+  second), overpass-api.de and fallback overpass.kumi.systems (nearby lodging
+  from OpenStreetMap), router.project-osrm.org (driving routes) and
+  routing.openstreetmap.de (walking routes). Returns m.uber.com, lyft.com,
+  www.google.com/maps, www.booking.com, www.airbnb.com and www.openstreetmap.org
+  links but does not contact them. No telemetry. Map data © OpenStreetMap
+  contributors (ODbL).
+license: MIT
+provides_tools:
+  - find_stay
+  - find_ride
+  - plan_night

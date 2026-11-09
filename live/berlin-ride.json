@@ -1,0 +1,62 @@
+{
+  "kind": "ride",
+  "pickup": {
+    "lat": 52.5250175,
+    "lng": 13.369448,
+    "label": "Berlin Hauptbahnhof",
+    "display_name": "Berlin Hauptbahnhof, Washingtonplatz, Europacity, Moabit, Mitte, Berlin, 10557, Deutschland",
+    "city": "Berlin",
+    "source": "nominatim",
+    "osm": "relation/3600565"
+  },
+  "dropoff": {
+    "lat": 52.3657974,
+    "lng": 13.4888906,
+    "label": "Flughafen Berlin Brandenburg",
+    "display_name": "Flughafen Berlin Brandenburg, Waßmannsdorfer Chaussee, Schönefeld, Schenkendorf-Krummensee, Dahme-Spreewald, Brandenburg, 12529, Deutschland",
+    "city": "Schönefeld",
+    "source": "nominatim",
+    "osm": "way/859790021"
+  },
+  "drive": {
+    "distance_m": 27110,
+    "duration_s": 2398,
+    "source": "https://router.project-osrm.org"
+  },
+  "walk": null,
+  "straight_line_m": 19467,
+  "links": {
+    "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=52.525017&pickup[longitude]=13.369448&pickup[nickname]=Berlin+Hauptbahnhof&dropoff[latitude]=52.365797&dropoff[longitude]=13.488891&dropoff[nickname]=Flughafen+Berlin+Brandenburg",
+    "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=52.525017&pickup[longitude]=13.369448&destination[latitude]=52.365797&destination[longitude]=13.488891",
+    "open_maps": "https://www.google.com/maps/dir/?api=1&origin=52.525017%2C13.369448&destination=52.365797%2C13.488891&travelmode=driving",
+    "open_maps_walking": null
+  },
+  "note": "Durations are OSRM road-network estimates without live traffic. Ride price and pickup wait show in the Uber/Lyft app.",
+  "warnings": [],
+  "honesty": "Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cannot complete a paid checkout. 'Get a ride' and 'Check Booking/Airbnb' open those apps or sites with pickup, dropoff or search prefilled; you confirm and pay there. No reservation has been made. OpenStreetMap does not know room availability or nightly prices.",
+  "attribution": "Map data © OpenStreetMap contributors (ODbL). Routing by OSRM.",
+  "fetched_at": "09 Nov 2026, 07:14 WAT",
+  "evidence": [
+    {
+      "source": "Nominatim (OpenStreetMap)",
+      "host": "nominatim.openstreetmap.org",
+      "url": "https://nominatim.openstreetmap.org/search?q=Berlin+Hauptbahnhof&format=jsonv2&limit=1&addressdetails=1",
+      "what": "geocode pickup: Berlin Hauptbahnhof",
+      "ok": true
+    },
+    {
+      "source": "Nominatim (OpenStreetMap)",
+      "host": "nominatim.openstreetmap.org",
+      "url": "https://nominatim.openstreetmap.org/search?q=Berlin+Brandenburg+Airport&format=jsonv2&limit=1&addressdetails=1",
+      "what": "geocode dropoff: Berlin Brandenburg Airport",
+      "ok": true
+    },
+    {
+      "source": "OSRM driving",
+      "host": "router.project-osrm.org",
+      "url": "https://router.project-osrm.org/route/v1/driving/13.369448,52.525017;13.488891,52.365797?overview=false",
+      "what": "driving route",
+      "ok": true
+    }
+  ]
+}

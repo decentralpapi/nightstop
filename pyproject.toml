@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nightstop"
+version = "0.1.1"
+description = "Hermes plugin: last-minute ride + room finder (OpenStreetMap + OSRM, deep links to Uber/Lyft/Booking/Airbnb)"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+nightstop = "nightstop.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["nightstop*"]
+exclude = ["tests*", "scripts*"]
