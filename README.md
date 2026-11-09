@@ -139,7 +139,7 @@ Nightstop sends the place names or coordinates you ask about to:
 | `routing.openstreetmap.de` | walking distance/duration (OSRM foot) | one table call, only for close stays |
 | `ipinfo.io` / `ipapi.co` | one-shot city-level approximate location **only** when the person asks for `my location` / `use_current_location` | never cached; see Privacy |
 
-User-Agent: `Nightstop/0.1.2 (Hermes plugin; https://hermes-agent.nousresearch.com)`.
+User-Agent: `Nightstop/0.1.3 (Hermes plugin; https://hermes-agent.nousresearch.com)`.
 HTTPS only, allowlisted hosts only, redirects refused, 8 MB response cap, ~200 s
 budget per call. **Returned but never contacted:** `m.uber.com`, `lyft.com`,
 `www.google.com/maps`, `www.booking.com`, `www.airbnb.com`, `www.openstreetmap.org`,

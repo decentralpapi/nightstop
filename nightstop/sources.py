@@ -21,7 +21,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 USER_AGENT = f"Nightstop/{VERSION} (Hermes plugin; https://hermes-agent.nousresearch.com)"
 
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
@@ -172,7 +172,8 @@ MAJOR_AIRPORTS = {
 }
 
 _AIRPORT_ALIASES = (
-    (re.compile(r"\bmurtala\s+muhamm?ed\b", re.I), "LOS"),
+    (re.compile(r"\bmurtal+a\b[^,;]{0,25}?\b(?:m[ou]h[ae]mm?[ae]d|airport|intl|international)\b(?!\s*(?:way|drive|road|rd|street|st|avenue|ave|close|crescent)\b)", re.I), "LOS"),
+    (re.compile(r"\b(?:mmia|mm2|mm1)\b|\b(?:lagos|ikeja)\s+(?:international\s+)?(?:airport|intl)\b|\blos\s+airport\b", re.I), "LOS"),
     (re.compile(r"\b(nnamdi\s+azikiwe|abuja\s+(?:international\s+)?airport)\b", re.I), "ABV"),
     (re.compile(r"\b(lisbon|lisboa)\s+(?:international\s+)?airport\b|\baeroporto\s+de\s+lisboa\b", re.I), "LIS"),
     (re.compile(r"\b(berlin\s+brandenburg|ber\s+airport|sch[oö]nefeld)\b", re.I), "BER"),

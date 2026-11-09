@@ -7,7 +7,7 @@ description: Last-minute ride + room SOS — real OpenStreetMap stays near you r
 maintainer: Omimi
 tier: community
 category: tools
-version: "0.1.2"
+version: "0.1.3"
 title: Nightstop
 docs_url: https://github.com/decentralpapi/nightstop#readme
 platforms: [linux, macos, windows]

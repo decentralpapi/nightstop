@@ -448,9 +448,9 @@ class MarkdownAndRobustness(unittest.TestCase):
             self.assertIn("[Book on Booking.com]", sch["description"])
 
     def test_version_bumped(self):
-        self.assertEqual(S.VERSION, "0.1.2")
+        self.assertEqual(S.VERSION, "0.1.3")
         y = (ROOT / "plugin.yaml").read_text()
-        self.assertIn("version: 0.1.2", y)
+        self.assertIn("version: 0.1.3", y)
         self.assertIn("ipinfo.io", y)
         self.assertIn("ipapi.co", y)
 
@@ -549,3 +549,13 @@ class AirportAndLocation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LagosAirportSpellings(unittest.TestCase):
+    def test_spellings(self):
+        from nightstop.sources import match_airport_alias as m
+        for t in ["Murtala Mohammed Airport", "murtala muhammad international airport",
+                  "Lagos airport", "Ikeja airport", "MMIA", "near murtala airport"]:
+            self.assertEqual(m(t), "LOS", t)
+        for t in ["Murtala Muhammed Way, Yaba", "Murtala Muhammed Drive Ikoyi", "Lekki Phase 1"]:
+            self.assertIsNone(m(t), t)
