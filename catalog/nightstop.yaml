@@ -2,7 +2,7 @@
 # The authoritative pin is the hermes-agent catalog PR; this file is for authors.
 name: nightstop
 repo: https://github.com/decentralpapi/nightstop
-sha: bd2ff7671c10d08a9ade4758f94725b2ebfcf2ac
+sha: f7cf1571b3f40ad6bf7fb61ff11c5313178858a0
 description: Last-minute ride + room SOS — real OpenStreetMap stays near you ranked by OSRM drive time, with Uber/Lyft/Booking/Airbnb links prefilled (no checkout, no invented prices).
 maintainer: Omimi
 tier: community
@@ -12,10 +12,10 @@ title: Nightstop
 docs_url: https://github.com/decentralpapi/nightstop#readme
 platforms: [linux, macos, windows]
 screenshots:
-  - https://raw.githubusercontent.com/decentralpapi/nightstop/bd2ff7671c10d08a9ade4758f94725b2ebfcf2ac/previews/night-full.png
-  - https://raw.githubusercontent.com/decentralpapi/nightstop/bd2ff7671c10d08a9ade4758f94725b2ebfcf2ac/previews/stay-list.png
-  - https://raw.githubusercontent.com/decentralpapi/nightstop/bd2ff7671c10d08a9ade4758f94725b2ebfcf2ac/previews/stay-detail.png
-  - https://raw.githubusercontent.com/decentralpapi/nightstop/bd2ff7671c10d08a9ade4758f94725b2ebfcf2ac/previews/ride.png
+  - https://raw.githubusercontent.com/decentralpapi/nightstop/f7cf1571b3f40ad6bf7fb61ff11c5313178858a0/previews/night-full.png
+  - https://raw.githubusercontent.com/decentralpapi/nightstop/f7cf1571b3f40ad6bf7fb61ff11c5313178858a0/previews/stay-list.png
+  - https://raw.githubusercontent.com/decentralpapi/nightstop/f7cf1571b3f40ad6bf7fb61ff11c5313178858a0/previews/stay-detail.png
+  - https://raw.githubusercontent.com/decentralpapi/nightstop/f7cf1571b3f40ad6bf7fb61ff11c5313178858a0/previews/ride.png
 capabilities:
   provides_tools:
     - find_stay
