@@ -1,0 +1,21 @@
+### Places to stay near Nnamdi Azikiwe International Airport
+3 mapped stay(s) within 10 km; showing 3, ranked by OSRM driving time.
+Area search: [Book on Booking.com](https://www.booking.com/searchresults.html?ss=Nnamdi+Azikiwe+International+Airport%2C+Abuja&latitude=9.006645&longitude=7.263172&group_adults=1&no_rooms=1) · [Airbnb nearby](https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=9.026645&ne_lng=7.283172&sw_lat=8.986645&sw_lng=7.243172&adults=1&query=Abuja)
+
+**1. Asha Hôtel** — Hotel · 7 min drive (4.5 km by road)
+   2.8 km straight line
+   [Get an Uber](https://m.uber.com/ul/?action=setPickup&pickup[latitude]=9.006645&pickup[longitude]=7.263172&pickup[nickname]=Nnamdi+Azikiwe+International+Airport&dropoff[latitude]=8.981610&dropoff[longitude]=7.263488&dropoff[nickname]=Asha+H%C3%B4tel) · [Lyft](https://lyft.com/ride?id=lyft&pickup[latitude]=9.006645&pickup[longitude]=7.263172&destination[latitude]=8.981610&destination[longitude]=7.263488) · [Directions](https://www.google.com/maps/dir/?api=1&origin=9.006645%2C7.263172&destination=8.981610%2C7.263488&travelmode=driving) · [Book on Booking.com](https://www.booking.com/searchresults.html?ss=Asha+H%C3%B4tel%2C+Abuja&latitude=8.981610&longitude=7.263488&group_adults=1&no_rooms=1) · [Airbnb nearby](https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=8.990610&ne_lng=7.272488&sw_lat=8.972610&sw_lng=7.254488&adults=1&query=Abuja)
+   Price: Price on Booking / Airbnb — OpenStreetMap has no nightly rates
+**2. Coco** — Hotel · 13 min drive (7.9 km by road)
+   4.4 km straight line
+   [Get an Uber](https://m.uber.com/ul/?action=setPickup&pickup[latitude]=9.006645&pickup[longitude]=7.263172&pickup[nickname]=Nnamdi+Azikiwe+International+Airport&dropoff[latitude]=8.969072&dropoff[longitude]=7.251782&dropoff[nickname]=Coco) · [Lyft](https://lyft.com/ride?id=lyft&pickup[latitude]=9.006645&pickup[longitude]=7.263172&destination[latitude]=8.969072&destination[longitude]=7.251782) · [Directions](https://www.google.com/maps/dir/?api=1&origin=9.006645%2C7.263172&destination=8.969072%2C7.251782&travelmode=driving) · [Book on Booking.com](https://www.booking.com/searchresults.html?ss=Coco%2C+Abuja&latitude=8.969072&longitude=7.251782&group_adults=1&no_rooms=1) · [Airbnb nearby](https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=8.978072&ne_lng=7.260782&sw_lat=8.960072&sw_lng=7.242782&adults=1&query=Abuja)
+   Price: Price on Booking / Airbnb — OpenStreetMap has no nightly rates
+**3. Trends place Hotel and suites** — Hotel · 25 min drive (24.8 km by road)
+   9.9 km straight line
+   [Get an Uber](https://m.uber.com/ul/?action=setPickup&pickup[latitude]=9.006645&pickup[longitude]=7.263172&pickup[nickname]=Nnamdi+Azikiwe+International+Airport&dropoff[latitude]=8.959535&dropoff[longitude]=7.339556&dropoff[nickname]=Trends+place+Hotel+and+suites) · [Lyft](https://lyft.com/ride?id=lyft&pickup[latitude]=9.006645&pickup[longitude]=7.263172&destination[latitude]=8.959535&destination[longitude]=7.339556) · [Directions](https://www.google.com/maps/dir/?api=1&origin=9.006645%2C7.263172&destination=8.959535%2C7.339556&travelmode=driving) · [Book on Booking.com](https://www.booking.com/searchresults.html?ss=Trends+place+Hotel+and+suites%2C+Abuja&latitude=8.959535&longitude=7.339556&group_adults=1&no_rooms=1) · [Airbnb nearby](https://www.airbnb.com/s/homes?search_by_map=true&ne_lat=8.968535&ne_lng=7.348556&sw_lat=8.950534&sw_lng=7.330556&adults=1&query=Abuja)
+   Price: Price on Booking / Airbnb — OpenStreetMap has no nightly rates
+> ⚠ Only 1 stay(s) within 3 km, so the search was expanded to 6 km.
+> ⚠ Only 2 stay(s) within 6 km, so the search was expanded to 10 km.
+
+_Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cannot complete a paid checkout. 'Get a ride' and 'Check Booking/Airbnb' open those apps or sites with pickup, dropoff or search prefilled; you confirm and pay there. No reservation has been made. OpenStreetMap does not know room availability or nightly prices._
+_Map data © OpenStreetMap contributors (ODbL). Routing by OSRM. Fetched 09 Nov 2026, 10:10 WAT._

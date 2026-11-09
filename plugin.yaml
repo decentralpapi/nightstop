@@ -1,5 +1,5 @@
 name: nightstop
-version: 0.1.1
+version: 0.1.2
 manifest_version: 2
 api_version: 1
 description: >
@@ -14,7 +14,7 @@ description: >
   about to these hosts: nominatim.openstreetmap.org (geocoding, max 1 request per
   second), overpass-api.de and fallback overpass.kumi.systems (nearby lodging
   from OpenStreetMap), router.project-osrm.org (driving routes) and
-  routing.openstreetmap.de (walking routes). Returns m.uber.com, lyft.com,
+  routing.openstreetmap.de (walking routes), and — only when the person asks for "my location" / use_current_location — ipinfo.io or ipapi.co for a one-shot city-level IP approximate location (never cached or stored). Returns m.uber.com, lyft.com,
   www.google.com/maps, www.booking.com, www.airbnb.com and www.openstreetmap.org
   links but does not contact them. No telemetry. Map data © OpenStreetMap
   contributors (ODbL).

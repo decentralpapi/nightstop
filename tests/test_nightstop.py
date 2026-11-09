@@ -54,25 +54,79 @@ class Fake(S.Client):
             ev.update(ok=False, error="HTTP 504")
             raise S.SourceError("%s returned HTTP 504" % p.hostname)
         ev["ok"] = True
+        if p.hostname in ("ipinfo.io", "ipapi.co"):
+            if p.hostname == "ipinfo.io":
+                return {"ip": "203.0.113.9", "city": "Lagos", "region": "Lagos", "country": "NG",
+                        "loc": "6.4541,3.3947"}
+            return {"ip": "203.0.113.9", "city": "Lagos", "region": "Lagos", "country_name": "Nigeria",
+                    "latitude": 6.4541, "longitude": 3.3947}
         if p.hostname == "nominatim.openstreetmap.org":
-            q = urllib.parse.parse_qs(p.query)["q"][0]
+            qs = urllib.parse.parse_qs(p.query)
+            q = (qs.get("q") or [""])[0]
             ql = q.lower()
+            # Structured search without q
+            if not q and (qs.get("city") or qs.get("amenity")):
+                amenity = (qs.get("amenity") or [""])[0].lower()
+                city = (qs.get("city") or [""])[0].lower()
+                if "murtala" in amenity or "lagos" in city:
+                    return [{"lat": "6.577369", "lon": "3.321156", "name": "Murtala Muhammed International Airport",
+                             "display_name": "Murtala Muhammed International Airport, Lagos",
+                             "class": "aeroway", "type": "aerodrome", "osm_type": "way", "osm_id": 1,
+                             "address": {"city": "Lagos"}, "importance": 0.7}]
+                return []
             if "nowhere" in ql or ql == "xyz":
                 return []
+            # Road trap: "murtala muhammed" without airport → Ikoyi drive (the bug we fix)
+            if "murtala" in ql and "airport" not in ql and "international" not in ql:
+                return [{"lat": "6.4513703", "lon": "3.4221735", "name": "Murtala Muhammed Drive",
+                         "display_name": "Murtala Muhammed Drive, Ikoyi, Lagos",
+                         "class": "highway", "type": "secondary", "osm_type": "way", "osm_id": 99,
+                         "address": {"suburb": "Ikoyi", "city": "Lagos"}, "importance": 0.4}]
+            if "murtala" in ql and ("airport" in ql or "international" in ql):
+                return [
+                    {"lat": "6.4513703", "lon": "3.4221735", "name": "Murtala Muhammed Drive",
+                     "display_name": "Murtala Muhammed Drive, Ikoyi, Lagos",
+                     "class": "highway", "type": "secondary", "osm_type": "way", "osm_id": 99,
+                     "address": {"suburb": "Ikoyi"}, "importance": 0.5},
+                    {"lat": "6.577369", "lon": "3.321156", "name": "Murtala Muhammed International Airport",
+                     "display_name": "Murtala Muhammed International Airport, Ikeja, Lagos",
+                     "class": "aeroway", "type": "aerodrome", "osm_type": "relation", "osm_id": 2,
+                     "address": {"city": "Lagos"}, "importance": 0.8},
+                ]
+            if "nnamdi" in ql or "azikiwe" in ql or ("abuja" in ql and "airport" in ql):
+                return [{"lat": "9.006645", "lon": "7.263172", "name": "Nnamdi Azikiwe International Airport",
+                         "display_name": "Nnamdi Azikiwe International Airport, Abuja",
+                         "class": "aeroway", "type": "aerodrome", "osm_type": "way", "osm_id": 3,
+                         "address": {"city": "Abuja"}, "importance": 0.8}]
+            if "lekki" in ql:
+                return [
+                    {"lat": "6.4335621", "lon": "3.4491265", "name": "British International School Lagos",
+                     "display_name": "British International School Lagos, Lekki Phase 1",
+                     "class": "amenity", "type": "school", "osm_type": "way", "osm_id": 4,
+                     "address": {"suburb": "Lekki Phase 1", "city": "Lagos"}, "importance": 0.3},
+                    {"lat": "6.4474", "lon": "3.4720", "name": "Lekki Phase 1",
+                     "display_name": "Lekki Phase 1, Lekki, Lagos, Nigeria",
+                     "class": "place", "type": "suburb", "osm_type": "node", "osm_id": 5,
+                     "address": {"suburb": "Lekki Phase 1", "city": "Lagos"}, "importance": 0.6},
+                ]
             # Simulate a miss on a verbose airport query so resolve() retries a simpler form.
             if "international" in ql and "airport" in ql and "lisbon" in ql:
                 return []
             if ql.strip() in {"lisbon", "lisbon airport", "lisbon, portugal"} or ql.startswith("lisbon"):
-                # Reuse Berlin fixture shape but with Lisbon-ish labels for retry tests only when asked
-                # Keep Berlin coords for offline routing fixtures; only label matters for retry proof.
                 alt = json.loads(json.dumps(NOM))
                 alt[0]["name"] = "Lisbon"
                 alt[0]["display_name"] = "Lisbon, Portugal"
                 return alt
             return NOM
         if "overpass" in p.hostname:
-            if self.small_first and "around:3000" in data["data"]:
-                return {"elements": self.overpass["elements"][:1]}
+            if self.small_first:
+                # Thin until the 10 km step so expansion ladder is exercised.
+                import re as _re
+                m = _re.search(r"around:(\d+)", data["data"])
+                rad = int(m.group(1)) if m else 0
+                if rad < 10000:
+                    return {"elements": self.overpass["elements"][:1]}
+
             return self.overpass
         if p.path.startswith("/table") or "/table/" in p.path:
             coords = p.path.split("/table/v1/driving/")[1].split(";")
@@ -213,8 +267,9 @@ class Engine(unittest.TestCase):
 
     def test_expands_radius_once_and_says_so(self):
         d = engine.find_stay("Berlin Hauptbahnhof", client=Fake(small_first=True))
-        self.assertEqual(d["radius_km"], 8.0)
+        self.assertEqual(d["radius_km"], 10.0)
         self.assertTrue(any("expanded" in w for w in d["warnings"]))
+        self.assertGreaterEqual(len(d["stays"]), 3)
 
     def test_stay_type_filter(self):
         d = engine.find_stay("52.525,13.3694", stay_type="hostel", client=Fake())
@@ -361,17 +416,20 @@ class ToolsAndPlugin(unittest.TestCase):
 
 
 class MarkdownAndRobustness(unittest.TestCase):
-    def test_geocode_queries_drop_filler(self):
-        qs = S.geocode_queries("Lisbon International Airport")
+    def test_geocode_queries_keep_airport_words(self):
+        qs = S.geocode_queries("Lisbon International Airport", keep_airport_words=True)
         self.assertEqual(qs[0], "Lisbon International Airport")
-        self.assertTrue(any(q.lower() == "lisbon" or q.lower().startswith("lisbon") for q in qs[1:]))
-        self.assertTrue(any("international" not in q.lower() for q in qs[1:]))
+        self.assertTrue(any("airport" in q.lower() for q in qs))
+        # Soft strip without keep_airport_words may drop airport for non-airport path
+        soft = S.geocode_queries("Alfama, Lisbon", keep_airport_words=False)
+        self.assertEqual(soft[0], "Alfama, Lisbon")
 
     def test_geocode_retry_on_verbose_airport(self):
-        # Fake returns [] for "...International...Airport..." then hits Lisbon simplified.
+        # Alias table maps Lisbon airport → LIS bundled coords (robust path).
         place = S.resolve(Fake(), "Lisbon International Airport", "origin")
-        self.assertEqual(place["label"], "Lisbon")
-        self.assertEqual(place.get("query_simplified_from"), "Lisbon International Airport")
+        self.assertIn("Lisbon", place["label"])
+        self.assertEqual(place.get("iata"), "LIS")
+        self.assertEqual(place["confidence"], "high")
 
     def test_reply_markdown_short_labels_on_ride(self):
         d = engine.find_ride("Berlin Hauptbahnhof", "52.366,13.503", client=Fake())
@@ -390,10 +448,102 @@ class MarkdownAndRobustness(unittest.TestCase):
             self.assertIn("[Book on Booking.com]", sch["description"])
 
     def test_version_bumped(self):
-        self.assertEqual(S.VERSION, "0.1.1")
+        self.assertEqual(S.VERSION, "0.1.2")
         y = (ROOT / "plugin.yaml").read_text()
-        self.assertIn("version: 0.1.1", y)
+        self.assertIn("version: 0.1.2", y)
+        self.assertIn("ipinfo.io", y)
+        self.assertIn("ipapi.co", y)
 
+
+
+
+
+class AirportAndLocation(unittest.TestCase):
+    def test_murtala_prefers_aerodrome_not_ikoyi_road(self):
+        # Even when Nominatim also returns the Ikoyi road, scoring + alias must win.
+        place = S.resolve(Fake(), "murtala muhammed airport", "dropoff")
+        # Alias table short-circuits to LOS — never the Ikoyi road.
+        self.assertEqual(place.get("iata"), "LOS")
+        self.assertAlmostEqual(place["lat"], 6.577369, places=3)
+        self.assertNotIn("Ikoyi", place.get("display_name", ""))
+        self.assertIn("Murtala", place["resolved_as"])
+
+    def test_score_rejects_highway_when_airport_wanted(self):
+        road = {"class": "highway", "type": "secondary", "name": "Murtala Muhammed Drive", "importance": 0.9}
+        aero = {"class": "aeroway", "type": "aerodrome", "name": "Murtala Muhammed International Airport", "importance": 0.5}
+        self.assertLess(S.score_nominatim(road, want_airport=True), -500)
+        self.assertGreater(S.score_nominatim(aero, want_airport=True), 80)
+
+    def test_abv_alias_and_nominatim(self):
+        place = S.resolve(Fake(), "Nnamdi Azikiwe Airport", "location")
+        self.assertEqual(place.get("iata"), "ABV")
+        self.assertAlmostEqual(place["lat"], 9.006645, places=3)
+
+    def test_lekki_prefers_suburb_over_school(self):
+        place = S.resolve(Fake(), "Lekki Phase 1, Lagos", "pickup")
+        self.assertEqual(place["label"], "Lekki Phase 1")
+        # Bundled place table beats OSM's school/ferry false friends.
+        self.assertEqual(place.get("source"), "bundled place table")
+        self.assertAlmostEqual(place["lat"], 6.4474, places=3)
+
+    def test_maps_url_and_coords(self):
+        self.assertEqual(S.parse_maps_url("https://www.google.com/maps/@6.4474,3.4720,17z"), (6.4474, 3.4720))
+        self.assertEqual(S.parse_maps_url("https://maps.google.com/?q=9.006,7.263"), (9.006, 7.263))
+        p = S.resolve(Fake(), "6.4474, 3.4720", "pickup")
+        self.assertEqual(p["source"], "coordinates (user supplied)")
+        p2 = S.resolve(Fake(), "https://www.google.com/maps/place/X/@6.45,3.40,14z", "pickup")
+        self.assertEqual(p2["source"], "Google Maps link")
+
+    def test_find_ride_lekki_to_los(self):
+        d = engine.find_ride("Lekki Phase 1, Lagos", "Murtala Muhammed Airport", client=Fake())
+        self.assertEqual(d["dropoff"].get("iata"), "LOS")
+        self.assertIn("Murtala", d["dropoff"]["resolved_as"])
+        self.assertIn("m.uber.com", d["links"]["open_uber"])
+
+    def test_current_location_one_shot_not_cached(self):
+        # No module-level cache before/after.
+        self.assertFalse(hasattr(S, "_LAST_IP_LOCATION"))
+        self.assertFalse(hasattr(S, "_IP_CACHE"))
+        c1 = Fake()
+        a = S.resolve(c1, "my location", "pickup")
+        self.assertTrue(a.get("ip_approx"))
+        self.assertEqual(a["confidence"], "low")
+        self.assertIn("not stored", a.get("location_privacy", "").lower())
+        # Evidence must not contain the raw IP string from the fixture.
+        blob = json.dumps(c1.evidence)
+        self.assertNotIn("203.0.113.9", blob)
+        # Second call with a fresh client is independent (no reuse).
+        c2 = Fake()
+        b = S.resolve(c2, "here", "origin")
+        self.assertTrue(b.get("ip_approx"))
+        self.assertIsNot(a, b)
+        self.assertFalse(hasattr(S, "_LAST_IP_LOCATION"))
+        # Engine surfaces location_privacy and does not persist anywhere.
+        d = engine.find_ride(pickup="my location", dropoff="52.366,13.503", client=Fake())
+        self.assertIn("location_privacy", d)
+        self.assertIn("Used once", d["location_privacy"])
+        self.assertTrue(any("approximate" in w.lower() or "IP" in w for w in d["warnings"]))
+        # Nothing written under plugin paths
+        for name in ("plugin_data", "ctx.state", ".nightstop_cache"):
+            self.assertFalse((ROOT / name).exists())
+
+    def test_use_current_location_tool_arg(self):
+        orig = S.Client
+        S.Client = Fake
+        try:
+            out = json.loads(tools.find_ride({"use_current_location": True, "dropoff": "52.366,13.503"}))
+        finally:
+            S.Client = orig
+        self.assertIn("data", out)
+        self.assertTrue(out["data"]["pickup"].get("ip_approx"))
+        self.assertIn("location_privacy", out["data"])
+
+    def test_schemas_mention_airports_and_location(self):
+        from nightstop import schemas
+        self.assertIn("airport", schemas.FIND_RIDE["description"].lower())
+        self.assertIn("find_stay", schemas.FIND_RIDE["description"])
+        self.assertIn("use_current_location", schemas.FIND_STAY["parameters"]["properties"])
+        self.assertIn("my location", schemas.FIND_STAY["parameters"]["properties"]["location"]["description"])
 
 
 

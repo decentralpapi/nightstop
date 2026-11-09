@@ -29,9 +29,9 @@ open data, a ranking engine, deep-link builders and a Desktop page:
 
 | Tool | What it does | Sources |
 |---|---|---|
-| `find_stay` | Named hotels, hostels, guest houses, motels, serviced apartments and chalets near an address / place / `lat,lng`. Default 3 km, auto-expands **once** to 8 km if fewer than 3 are found (and says so). Optional `stay_type`, `check_in`/`check_out` (only prefill Booking/Airbnb links). | Nominatim, Overpass, OSRM |
-| `find_ride` | Pickup → dropoff: OSRM road distance (m) and duration (s), walking time if under ~2.5 km, Open Uber / Open Lyft / Open maps links. Fares and wait times are shown only in the ride app. | Nominatim, OSRM |
-| `plan_night` | **Stranded mode.** Where you are now (+ optional area to sleep in) → nearby stays ranked by OSRM driving time from you, walking time when close, a top pick, ride links from you to *each* stay and book links for each stay. | Nominatim, Overpass, OSRM |
+| `find_stay` | Named hotels, hostels, guest houses, motels, serviced apartments and chalets near an address / place / `lat,lng`. Default 3 km, auto-widens **3→6→10 km** if fewer than ~5 are found (and says so). Optional `stay_type`, `check_in`/`check_out` (only prefill Booking/Airbnb links). | Nominatim, Overpass, OSRM |
+| `find_ride` | Pickup → dropoff (airports prefer aerodrome/IATA; roads rejected when an airport was asked for): OSRM road distance/duration, walking time if under ~2.5 km, Get an Uber / Lyft / Directions links. For "ride to airport A, stay near airport B" call `find_ride` + `find_stay` separately. | Nominatim, OSRM |
+| `plan_night` | **Stranded mode.** Where you are now (+ optional area to sleep in) → nearby stays ranked by OSRM driving time from you, walking time when close, a top pick, ride links from you to *each* stay and book links for each stay. Auto-widens 3→6→10 km when thin. | Nominatim, Overpass, OSRM |
 
 Every handler returns a JSON string with `formatted_output` (Markdown for chat) and
 `data`, including an `evidence` array: `{source, host, url, what, ok | error}` for
@@ -132,13 +132,14 @@ Nightstop sends the place names or coordinates you ask about to:
 
 | Host | Why | Policy respected |
 |---|---|---|
-| `nominatim.openstreetmap.org` | geocode text to coordinates (skipped if you pass `lat,lng`) | ≤1 request/second (process-wide lock), descriptive User-Agent, `limit=1` |
+| `nominatim.openstreetmap.org` | geocode text to coordinates (skipped if you pass `lat,lng`) | ≤1 request/second (process-wide lock), descriptive User-Agent, multi-result ranking (airports prefer aeroway) |
 | `overpass-api.de` | nearby lodging from OSM | one query per search (+1 if radius expands), one retry on overload |
 | `overpass.kumi.systems` | Overpass fallback mirror | only if the primary fails |
 | `router.project-osrm.org` | driving distance/duration (table + route) | one table call per search |
 | `routing.openstreetmap.de` | walking distance/duration (OSRM foot) | one table call, only for close stays |
+| `ipinfo.io` / `ipapi.co` | one-shot city-level approximate location **only** when the person asks for `my location` / `use_current_location` | never cached; see Privacy |
 
-User-Agent: `Nightstop/0.1.1 (Hermes plugin; https://hermes-agent.nousresearch.com)`.
+User-Agent: `Nightstop/0.1.2 (Hermes plugin; https://hermes-agent.nousresearch.com)`.
 HTTPS only, allowlisted hosts only, redirects refused, 8 MB response cap, ~200 s
 budget per call. **Returned but never contacted:** `m.uber.com`, `lyft.com`,
 `www.google.com/maps`, `www.booking.com`, `www.airbnb.com`, `www.openstreetmap.org`,
@@ -149,6 +150,27 @@ queries are sensitive: the hosts above see what you searched.
 
 The OSRM demo server and FOSSGIS routing are free community services meant for light
 use; heavy/commercial use should point at your own OSRM/Overpass instance.
+
+
+## Privacy (location)
+
+Nightstop never tracks you in the background.
+
+- **Explicit only.** Approximate location is fetched only when that call passes
+  `use_current_location: true` or a place string like `my location` / `here` /
+  `current location`. Otherwise no IP lookup runs.
+- **One-shot.** The lookup runs for that single tool call, then the coordinates live
+  only in that response. They are **not** cached in memory across calls, **not**
+  written to disk, `ctx.state`, logs, or `plugin_data`, and there is **no** background
+  polling or reuse on later turns.
+- **Minimal sharing.** The approximate coordinates are sent only to the routing /
+  geocode / lodging hosts needed for *that* search (Nominatim / Overpass / OSRM as
+  usual). The raw IP is not kept on the result object and is not logged.
+- **Honest label.** Results include a `location_privacy` note such as
+  *"Used once for this search, not stored."* Confidence is `low` (city-level, not GPS);
+  confirm the city with the person before relying on it for a pickup.
+- Exact `lat,lng` and Google Maps links/pins are treated as user-supplied coordinates
+  (no IP lookup).
 
 ## Tests
 

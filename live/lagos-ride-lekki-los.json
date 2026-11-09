@@ -1,0 +1,58 @@
+{
+  "kind": "ride",
+  "pickup": {
+    "lat": 6.4474,
+    "lng": 3.472,
+    "label": "Lekki Phase 1",
+    "display_name": "Lekki Phase 1, Lekki, Lagos, Nigeria",
+    "city": "Lagos",
+    "source": "bundled place table",
+    "osm": null,
+    "resolved_as": "Lekki Phase 1",
+    "confidence": "medium",
+    "note": "Neighbourhood centroid from Nightstop's place table (OSM had no clear place node).",
+    "matched_via": "neighbourhood alias"
+  },
+  "dropoff": {
+    "lat": 6.577369,
+    "lng": 3.321156,
+    "label": "Murtala Muhammed International Airport",
+    "display_name": "Murtala Muhammed International Airport (LOS), Lagos, Nigeria",
+    "city": "Lagos",
+    "source": "bundled IATA table",
+    "osm": null,
+    "resolved_as": "Murtala Muhammed International Airport (LOS)",
+    "confidence": "high",
+    "iata": "LOS",
+    "matched_via": "name/IATA alias"
+  },
+  "drive": {
+    "distance_m": 31797,
+    "duration_s": 1515,
+    "source": "https://router.project-osrm.org"
+  },
+  "walk": null,
+  "straight_line_m": 22058,
+  "links": {
+    "open_uber": "https://m.uber.com/ul/?action=setPickup&pickup[latitude]=6.447400&pickup[longitude]=3.472000&pickup[nickname]=Lekki+Phase+1&dropoff[latitude]=6.577369&dropoff[longitude]=3.321156&dropoff[nickname]=Murtala+Muhammed+International+Airport",
+    "open_lyft": "https://lyft.com/ride?id=lyft&pickup[latitude]=6.447400&pickup[longitude]=3.472000&destination[latitude]=6.577369&destination[longitude]=3.321156",
+    "open_maps": "https://www.google.com/maps/dir/?api=1&origin=6.447400%2C3.472000&destination=6.577369%2C3.321156&travelmode=driving",
+    "open_maps_walking": null
+  },
+  "note": "Durations are OSRM road-network estimates without live traffic. Ride price and pickup wait show in the Uber/Lyft app.",
+  "warnings": [
+    "Neighbourhood centroid from Nightstop's place table (OSM had no clear place node)."
+  ],
+  "honesty": "Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cannot complete a paid checkout. 'Get a ride' and 'Check Booking/Airbnb' open those apps or sites with pickup, dropoff or search prefilled; you confirm and pay there. No reservation has been made. OpenStreetMap does not know room availability or nightly prices.",
+  "attribution": "Map data © OpenStreetMap contributors (ODbL). Routing by OSRM.",
+  "fetched_at": "09 Nov 2026, 10:13 WAT",
+  "evidence": [
+    {
+      "source": "OSRM driving",
+      "host": "router.project-osrm.org",
+      "url": "https://router.project-osrm.org/route/v1/driving/3.472000,6.447400;3.321156,6.577369?overview=false",
+      "what": "driving route",
+      "ok": true
+    }
+  ]
+}

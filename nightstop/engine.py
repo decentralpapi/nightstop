@@ -19,7 +19,9 @@ HONESTY = ("Nightstop cannot log into Uber, Lyft, Airbnb or Booking.com and cann
            "OpenStreetMap does not know room availability or nightly prices.")
 ATTRIBUTION = "Map data © OpenStreetMap contributors (ODbL). Routing by OSRM."
 DEFAULT_RADIUS_KM = 3.0
-EXPANDED_RADIUS_KM = 8.0
+EXPANDED_RADIUS_KM = 8.0  # kept for back-compat imports
+RADIUS_STEPS_KM = (3.0, 6.0, 10.0)
+MIN_STAYS_TARGET = 5
 MAX_TABLE = 40
 WALK_IF_WITHIN_M = 2500
 
@@ -86,21 +88,47 @@ def fmt_distance(m):
     return "%d m" % m if m < 1000 else "%.1f km" % (m / 1000)
 
 
+def _expand_radii(start_km):
+    """Yield search radii: the requested one, then larger steps until ~10 km."""
+    start = float(start_km)
+    seen = set()
+    ordered = [start] + [r for r in RADIUS_STEPS_KM if r > start + 1e-9]
+    # Always allow climbing the standard ladder even when start was already 3.
+    if start <= DEFAULT_RADIUS_KM + 1e-9:
+        ordered = list(RADIUS_STEPS_KM)
+    out = []
+    for r in ordered:
+        r = round(r, 3)
+        if r not in seen and 0.2 <= r <= 25:
+            seen.add(r)
+            out.append(r)
+    return out
+
+
 def _search(client, center, radius_km, stay_type, warnings):
-    """Overpass search with one automatic expansion to ~8 km if fewer than 3 hits."""
-    stays, skipped = S.fetch_lodging(client, center["lat"], center["lng"], radius_km * 1000)
-    if stay_type:
-        stays = [s for s in stays if s["type"] == stay_type]
-    used = radius_km
-    if len(stays) < 3 and radius_km < EXPANDED_RADIUS_KM:
+    """Overpass search; widen 3→6→10 km (or upward from a custom radius) until ≥5 stays."""
+    stays, skipped, used = [], 0, radius_km
+    radii = _expand_radii(radius_km)
+    for i, r in enumerate(radii):
         try:
-            more, skipped = S.fetch_lodging(client, center["lat"], center["lng"], EXPANDED_RADIUS_KM * 1000)
-            if stay_type:
-                more = [s for s in more if s["type"] == stay_type]
-            warnings.append("Only %d stay(s) within %g km, so the search was expanded to %g km." % (len(stays), radius_km, EXPANDED_RADIUS_KM))
-            stays, used = more, EXPANDED_RADIUS_KM
+            batch, skipped = S.fetch_lodging(client, center["lat"], center["lng"], r * 1000)
         except SourceError as e:
-            warnings.append("Tried to expand search to %g km but Overpass failed: %s" % (EXPANDED_RADIUS_KM, e))
+            if i == 0:
+                raise
+            warnings.append("Tried to expand search to %g km but Overpass failed: %s" % (r, e))
+            break
+        if stay_type:
+            batch = [s for s in batch if s["type"] == stay_type]
+        if i > 0 and len(batch) > len(stays):
+            warnings.append(
+                "Only %d stay(s) within %g km, so the search was expanded to %g km."
+                % (len(stays), used, r)
+            )
+        stays, used = batch, r
+        if len(stays) >= MIN_STAYS_TARGET:
+            break
+        if i + 1 < len(radii) and len(stays) < MIN_STAYS_TARGET:
+            continue
     for s in stays:
         s["straight_line_m"] = S.haversine_m(center, s)
     stays.sort(key=lambda s: s["straight_line_m"])
@@ -161,12 +189,45 @@ def _evidence(client):
     return [dict(e) for e in client.evidence]
 
 
-def find_stay(location, radius_km=None, stay_type=None, check_in=None, check_out=None, limit=None, client=None):
+def _resolution_warnings(place, warnings, role):
+    if place.get("confidence") == "low":
+        warnings.append(
+            "%s resolved with low confidence as %s (%.5f, %.5f). Confirm before using ride/booking links."
+            % (role.capitalize(), place.get("resolved_as") or place.get("label"), place["lat"], place["lng"])
+        )
+    if place.get("ip_approx") or place.get("source", "").startswith("ip"):
+        warnings.append(
+            place.get("note")
+            or "Origin is an approximate IP-based city location — confirm with the person before relying on it."
+        )
+    if place.get("note") and place.get("confidence") != "low" and "IP-based" not in (place.get("note") or ""):
+        warnings.append(place["note"])
+
+
+def _location_privacy(places):
+    for p in places:
+        if p and (p.get("ip_approx") or "IP approximate" in str(p.get("source") or "")):
+            return p.get("location_privacy") or S.LOCATION_PRIVACY
+    return None
+
+
+def _with_privacy(result, *places):
+    note = _location_privacy(places)
+    if note:
+        result["location_privacy"] = note
+    return result
+
+
+def find_stay(location=None, radius_km=None, stay_type=None, check_in=None, check_out=None, limit=None,
+              use_current_location=False, client=None):
     client = client or S.Client()
     radius_km, stay_type, limit = _radius(radius_km), _type(stay_type), _limit(limit)
     check_in, check_out = _dates(check_in, check_out)
     warnings = []
-    center = S.resolve(client, location, "location")
+    if use_current_location and not (isinstance(location, str) and location.strip()):
+        location = "my location"
+    center = S.resolve(client, location, "location", use_current_location=bool(use_current_location))
+    _resolution_warnings(center, warnings, "location")
     try:
         stays, used, skipped = _search(client, center, radius_km, stay_type, warnings)
     except SourceError as e:
@@ -184,21 +245,32 @@ def find_stay(location, radius_km=None, stay_type=None, check_in=None, check_out
         warnings.append("No named hotels, hostels, guest houses, motels or apartments are mapped in OpenStreetMap within %g km." % used)
     if check_in:
         warnings.append("Dates %s → %s only prefill Booking/Airbnb links; OpenStreetMap does not know vacancy." % (check_in, check_out))
-    return {
+    return _with_privacy({
         "kind": "stay", "query": location, "center": center, "radius_km": used, "stay_type": stay_type,
         "check_in": check_in, "check_out": check_out, "found_total": total, "skipped_unnamed_or_invalid": skipped,
         "stays": stays, "area_links": {"check_booking": S.booking_link({"name": center["label"], "city_hint": center.get("city"), "lat": center["lat"], "lng": center["lng"]}, check_in, check_out),
                                         "check_airbnb": S.airbnb_link(center, check_in, check_out, span=0.02)},
         "warnings": warnings, "honesty": HONESTY, "attribution": ATTRIBUTION,
         "fetched_at": now_wat(), "evidence": _evidence(client),
-    }
+    }, center)
 
 
-def find_ride(pickup, dropoff, client=None):
+def find_ride(pickup=None, dropoff=None, use_current_location=False, client=None):
     client = client or S.Client()
-    a = S.resolve(client, pickup, "pickup")
-    b = S.resolve(client, dropoff, "dropoff")
     warnings = []
+    if use_current_location and not (isinstance(pickup, str) and pickup.strip()):
+        pickup = "my location"
+    a = S.resolve(client, pickup, "pickup", use_current_location=bool(use_current_location))
+    b = S.resolve(client, dropoff, "dropoff")
+    _resolution_warnings(a, warnings, "pickup")
+    _resolution_warnings(b, warnings, "dropoff")
+    # Refuse to ship a ride link when an airport/station was asked for but we got a road.
+    if S._AIRPORT_HINT.search(str(dropoff or "")) or S.match_airport_alias(str(dropoff or "")):
+        if b.get("nominatim_class") in S._ROAD_CLASSES or (b.get("nominatim_type") or "") in S._HIGHWAY_TYPES:
+            raise SourceError(
+                "Dropoff %r resolved to a road (%s), not an airport. Not returning a ride link."
+                % (dropoff, b.get("resolved_as") or b.get("label"))
+            )
     drive = None
     try:
         drive = S.osrm_route(client, a, b, "driving")
@@ -217,23 +289,29 @@ def find_ride(pickup, dropoff, client=None):
             "Uber/Lyft/Directions links are still included so you can open them with pickup and dropoff set."
             % (a["label"], b["label"])
         )
-    return {
+    return _with_privacy({
         "kind": "ride", "pickup": a, "dropoff": b, "drive": drive, "walk": walk, "straight_line_m": straight,
         "links": {"open_uber": S.uber_link(a, b), "open_lyft": S.lyft_link(a, b), "open_maps": S.maps_directions(a, b),
                   "open_maps_walking": S.maps_directions(a, b, "walking") if walk else None},
         "note": "Durations are OSRM road-network estimates without live traffic. Ride price and pickup wait show in the Uber/Lyft app.",
         "warnings": warnings, "honesty": HONESTY, "attribution": ATTRIBUTION,
         "fetched_at": now_wat(), "evidence": _evidence(client),
-    }
+    }, a, b)
 
 
-def plan_night(origin, area=None, radius_km=None, stay_type=None, check_in=None, check_out=None, limit=None, client=None):
+def plan_night(origin=None, area=None, radius_km=None, stay_type=None, check_in=None, check_out=None, limit=None,
+               use_current_location=False, client=None):
     client = client or S.Client()
     radius_km, stay_type, limit = _radius(radius_km), _type(stay_type), _limit(limit, 8)
     check_in, check_out = _dates(check_in, check_out)
     warnings = []
-    here = S.resolve(client, origin, "origin")
+    if use_current_location and not (isinstance(origin, str) and origin.strip()):
+        origin = "my location"
+    here = S.resolve(client, origin, "origin", use_current_location=bool(use_current_location))
+    _resolution_warnings(here, warnings, "origin")
     center = S.resolve(client, area, "area") if area and str(area).strip() else here
+    if center is not here:
+        _resolution_warnings(center, warnings, "area")
     try:
         stays, used, skipped = _search(client, center, radius_km, stay_type, warnings)
     except SourceError as e:
@@ -258,7 +336,7 @@ def plan_night(origin, area=None, radius_km=None, stay_type=None, check_in=None,
     top = pool[0] if pool else None
     walkers = [x for x in pool if x.get("walk")]
     near_walk = min(walkers, key=lambda x: x["walk"]["duration_s"]) if walkers else None
-    return {
+    return _with_privacy({
         "kind": "night", "origin": here, "area": center if center is not here else None, "radius_km": used,
         "stay_type": stay_type, "check_in": check_in, "check_out": check_out, "found_total": total,
         "skipped_unnamed_or_invalid": skipped, "stays": pool,
@@ -268,4 +346,4 @@ def plan_night(origin, area=None, radius_km=None, stay_type=None, check_in=None,
                        "check_airbnb": S.airbnb_link(center, check_in, check_out, span=0.02)},
         "warnings": warnings, "honesty": HONESTY, "attribution": ATTRIBUTION,
         "fetched_at": now_wat(), "evidence": _evidence(client),
-    }
+    }, here, center)
